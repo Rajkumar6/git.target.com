@@ -1,0 +1,43 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.9.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+}
+
+group = 'target.retail.api'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-cache'
+	implementation 'org.springframework.boot:spring-boot-starter-data-cassandra-reactive'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compile group: 'net.sf.ehcache', name: 'ehcache', version: '2.10.5'
+// https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-reactive-httpclient
+	compile group: 'org.eclipse.jetty', name: 'jetty-reactive-httpclient', version: '1.0.3'
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-test-autoconfigure
+	compile group: 'org.springframework.boot', name: 'spring-boot-test-autoconfigure', version: '2.1.9.RELEASE'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'io.projectreactor:reactor-test'
+	testCompile group: 'org.cassandraunit', name: 'cassandra-unit', version: '3.7.1.0'
+	testCompile group: 'org.cassandraunit', name: 'cassandra-unit-spring', version: '3.7.1.0'
+	compile group: 'org.unittested', name: 'cassandra-test-spring', version: '1.0.2'
+
+}
